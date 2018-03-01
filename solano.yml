@@ -5,6 +5,7 @@ hooks:
     script/configure_cf_cli.rb
 
 tests:
+    - cf target
     - cf orgs
     - cf spaces
     - cf apps
