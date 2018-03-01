@@ -1,0 +1,10 @@
+hooks:
+  pre_setup: |
+    set -e
+    wget -qO- "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.34.1&source=github-rel" | tar xvz -C ~/bin
+    script/configure_cf_cli.rb
+
+tests:
+    - cf orgs
+    - cf spaces
+    - cf apps
