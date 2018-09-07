@@ -1,11 +1,17 @@
-hooks:
-  pre_setup: |
+script: |
     set -e
+    export HOME=`pwd`
+    echo '============'
+    echo 'Setup CF CLI'
+    echo '============'
+    mkdir ~/bin
+    export PATH=$PATH:`pwd`/bin
     wget -qO- "https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.34.1&source=github-rel" | tar xvz -C ~/bin
     script/configure_cf_cli.rb
-
-tests:
-    - cf target
-    - cf orgs
-    - cf spaces
-    - cf apps
+    echo '==============='
+    echo 'CF CLI Commands'
+    echo '==============='
+    env | sort
+    cf target
+    cf orgs
+    cf spaces
